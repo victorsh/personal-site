@@ -18,19 +18,35 @@ const Controls = (props) => {
     camera,
     gl: { domElement }
   } = useThree()
-  const CameraControls = () => {
 
-    camera.position.set(-5, 0, 0)
-  
-    return <orbitControls ref={controls} args={[camera, domElement]} />
+  const CameraControls = () => {
+    camera.position.set(-10, 0, -10)
+    return (
+      <orbitControls
+        ref={controls}
+        args={[camera, domElement]}
+        enableZoom={true}
+        maxAzimuthAngle={-Math.PI / 2}
+        minAzimuthAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI}
+        minPolarAngle={0}
+      />
+    )
   }
+
+  let frameCount = 0
   useFrame(state => {
     controls.current.update()
-    camera.position.x += 0.01
-    camera.position.z += 0.01
+    if (frameCount === 0) {
+      console.log(state)
+    }
+    // camera.position.x += 0.01
+    // camera.position.z += 0.01
+    frameCount++
   })
+
   return (
-    <CameraControls target={[0, 0, 0]} />
+    <CameraControls />
   )
 }
 

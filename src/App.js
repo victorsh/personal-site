@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux'
 import * as actions from './store/actions'
 
 import Home from './pages/Home'
+import About from './pages/About'
+import HomeThree from './pages/HomeThree'
 import './style.scss'
 
 const App = () => {
@@ -25,7 +27,10 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path='/'>
-            <Home />
+            <HomeThree />
+          </Route>
+          <Route path='/about'>
+            <About />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -15,14 +15,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import * as THREE from 'three'
 
-import Controls from '../components/three/controls'
-import Box from '../components/three/box'
-import Card from '../components/three/card'
-import Actions from '../components/three/actions'
-
 const fontLoader = new FontLoader();
 
-const HomeThree = () => {
+const About = () => {
   const rstate = useSelector(rstate => rstate)
   const dispatch = useDispatch()
   const { appState } = bindActionCreators(actions, dispatch)
@@ -34,21 +29,16 @@ const HomeThree = () => {
   return (
     <div id="home-three">
       <Header />
-      <div id="canvas-container" style={{width: '100%', height: '100%', position: 'fixed', top: '0px', zIndex: '-1'}}>
-        <Canvas style={{ background: 'black'}}>
-          {/* <CameraControls target={[0, 0, 0]} position={[5, 0, 0]}/> */}
-          <Controls />
-          <ambientLight intensity={0.1} />
-          <directionalLight color="white" position={[-5, 0, -5]} />
-          <primitive object={new THREE.AxesHelper(10)} />
-          <Box />
-          <Card appState={appState} rstate={rstate}/>
-          <Actions appState={appState} rstate={rstate}/>
-        </Canvas>
+      <div id="about-text">
+        <p>I am a sort of software engineer experimenting and developing interactive experiences through various a plethora of technologies.
+        The current tech stack that I'm working with primarily uses React, Threejs, Solidity and Nodejs. With this stack I aim to create
+        decentralized applications that merge the wonderful world of web based 3D with blockchain.</p>
+
+        <p>Prior to my current ventures I have worked several years as a Software Engineer / Full Stack Developer.</p>
       </div>
       <Footer />
     </div>
   )
 }
 
-export default HomeThree
+export default About
