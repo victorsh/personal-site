@@ -4,8 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
-require('dotenv').config()
 
 var config = {
   entry: './src/index.js',
@@ -59,8 +57,7 @@ var config = {
       title: 'Some Kinda Crypto'
     }),
     new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new NodePolyfillPlugin(),
-    new Dotenv()
+    new NodePolyfillPlugin()
   ],
   optimization: {
     minimize: true,
