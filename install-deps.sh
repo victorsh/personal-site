@@ -1,0 +1,4 @@
+#!/bin/bash
+
+npm i -D @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/runtime babel-loader concurrently css-loader css-minimizer-webpack-plugin dotenv dotenv-webpack express file-loader hardhat html-webpack-plugin https-localhost json-loader mini-css-extract-plugin node-polyfill-webpack-plugin nodemon sass sass-loader source-map-loader stream-http style-loader url-loader webpack-cli webpack-dev-middleware webpack-dev-server
+npm i -S @material-ui/core axios websocket react react-dom react-redux react-router react-router-dom redux redux-thunk three web3 web3-eth-accounts 

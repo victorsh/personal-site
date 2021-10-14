@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
+
+$burgendy: #800020;
+$navy-blue: #000080;
+$sage: #BCB88A;
+
+*, html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Crimson+Pro';
+}
+
+body {
+  background-color: forestgreen;
+}
+
+.header-container {
+  width: 100vw;
+  height: 5vh;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 5vh;
+}
+
+.header-side {
+  width: 30%;
+  height: 5vh;
+}
+
+.header-side-left {
+  background-image: linear-gradient(to right, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
+}
+
+.header-side-right {
+  background-image: linear-gradient(to left, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
+}
+
+.header-mid {
+  width: 40%;
+  background: rgb(0, 107, 150, 1);
+  height: 5vh;
+  font-size: 24px;
+  line-height: 200%;
+  vertical-align: middle;
+  color:rgb(230, 230, 230, 1);
+  text-align: center;
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 5vh;
+  color: white;
+  background: rgb(31, 35, 43)
+}
+
+.footer {
+  display: flex;
+  background: red;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+  height: 5vh;
+}
