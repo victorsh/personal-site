@@ -4,24 +4,30 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame, extend, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
+import { useSelector, useDispatch, Provider, ReactReduxContext } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../../store/actions'
+
 const Card = (props) => {
+  const rstate = useSelector(rstate => rstate)
+  const dispatch = useDispatch()
+  const { appState } = bindActionCreators(actions, dispatch)
+
   const card = useRef()
+  
   useEffect(async () => {
-    await props.appState({...props.rstate.main, status: 'card-object'})
-    console.log(props.rstate.main)
   }, [])
 
   let fc = 0
   useFrame(state => {
     if (fc === 60) {
-      console.log(props.rstate.main)
     }
     // card.current.rotation.x = clock.getElapsedTime()
     fc++
   })
   return (
     <>
-      <mesh position={[0, 0, 5]}onPointerEnter={(e) => console.log('in')} onPointerLeave={(e) => console.log('out')} ref={card}>
+      <mesh position={[0, 0, 5]} onPointerEnter={(e) => console.log('in')} onPointerLeave={(e) => console.log('out')} ref={card}>
         <planeGeometry args={[10, 15]}/>
         <meshStandardMaterial color='#cccccc' side={THREE.DoubleSide} />
       </mesh>
