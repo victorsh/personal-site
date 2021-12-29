@@ -1,4 +1,4 @@
-https://github.com/emreacar/google-fonts-as-json/tree/master/json-files
+// https://github.com/emreacar/google-fonts-as-json/tree/master/json-files
 
 'use strict'
 
@@ -38,10 +38,10 @@ export default class ThreeD {
     this.scene.background = new THREE.Color('#000000')
 
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000)
-    this.camera.position.set( 5, 5, 10 )
+    this.camera.position.set(5, 5, 10)
     
     this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-    this.controls.target.set( 0, 0, 0 )
+    this.controls.target.set(0, 0, 0)
     this.controls.update()
     
     this.mouse = new THREE.Vector2()
@@ -58,6 +58,10 @@ export default class ThreeD {
     window.addEventListener('mousemove', e => this.mouseMove(e), false)
     window.addEventListener('mousedown', e => this.mouseDown(e), false)
     window.addEventListener('mouseup', e => this.mouseUp(e), false)
+    window.addEventListener('touchstart', e => {  })
+    window.addEventListener('touchmove', e => {  })
+    window.addEventListener('touchend', e => {  })
+    window.addEventListener('touchcancel', e => {  })
 
     document.body.addEventListener('loading-green', () => {
       console.log('loading text to green')
@@ -72,55 +76,40 @@ export default class ThreeD {
     this.loadLights()
     axis(this.scene)
 
+    const polyhedronGeometry = new THREE.PolyhedronBufferGeometry(
+      [-1,-1,-1,  1,-1,-1,  1, 1,-1,  -1, 1,-1,
+       -1,-1, 1,  1,-1, 1,  1, 1, 1,  -1, 1, 1],
+      [2,1,0,  0,3,2,
+       0,4,7,  7,3,0,
+       0,1,5,  5,4,0,
+       1,2,6,  6,5,1,
+       2,3,7,  7,6,2,
+       4,5,6,  6,7,4],
+      2, 1
+    )
+    const polyhedronMaterial = new THREE.MeshLambertMaterial({ color: '#335533' })
+    const polyhedron = new THREE.Mesh( polyhedronGeometry, polyhedronMaterial )
+    // this.scene.add(polyhedron)
+
+    const wireframe = new THREE.WireframeGeometry(polyhedronGeometry)
+    const line = new THREE.LineSegments(wireframe)
+    line.material.depthTest = false
+    line.material.opacity = 0.25
+    line.material.transparent = true
+    line.name = 'polyhedron-line'
+    this.scene.add(line)
+
     this.renderer.render(this.scene, this.camera)
-    
-    this.cubes = RotatingBoxes(this.scene)
-    this.dbox = dbox(this.scene, -5, 0, 0)
-    this.tree = tree(this.scene, 5, 5, -5)
     
     this.animate()
   }
 
   animate() {
     this.renderer.setAnimationLoop(() => {
-      this.ld_text.lookAt(this.camera.position)
-      if (typeof this.cubes !== 'undefined') {
-        this.cubes.forEach(cube => {
-          cube.rotation.x += Math.floor(Math.random() * 1.01)
-          cube.rotation.y += Math.floor(Math.random() * 1.01)
-        })
-      }
-
-      if (typeof this.dbox !== 'undefined') {
-        this.dbox.forEach(box => {
-          if (box.scale.x >= 1) {
-            this.animDBoxPulse = -1
-          } else if (box.scale.x <= 0.5) {
-            this.animDBoxPulse = 1
-          }
-          box.scale.x = box.scale.x + this.animDBoxPulse*0.01
-          box.scale.y = box.scale.y + this.animDBoxPulse*0.01
-          box.scale.z = box.scale.z + this.animDBoxPulse*0.01
-          
-          // box.rotation.x += 0.01
-          box.rotation.y += 0.01
-          box.rotation.z += 0.01
-        })
-      }
-
       const intersects = this.raycaster.intersectObjects( this.scene.children )
 
       if (intersects.length > 0 && !intersects[0].object.name.includes('axis')) {
-        // console.log(intersects[0].object.name)
-        const hexValues = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
-        if (this.loopCount % 15 === 0) {
-          let hex = ''
-          for(let i = 0; i < 6; i++){
-            const index = Math.floor(Math.random() * hexValues.length)
-            hex += hexValues[index];
-          }
-          intersects[0].object.material.color.set(`#${hex}`)
-        }
+
       }
 
       this.loopCount++
