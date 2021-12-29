@@ -9,8 +9,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 const Home = () => {
-  const ref = useRef()
-
   const rstate = useSelector((rstate) => rstate)
   const dispatch = useDispatch()
   const { appState } = bindActionCreators(actions, dispatch)
@@ -28,7 +26,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <IntroModal />
+      {/* <IntroModal /> */}
       <button onClick={() => document.body.dispatchEvent(event_loading_green)}>hello</button>
       <button onClick={() => document.body.dispatchEvent(event_switch_scene)}>switch scene</button>
       <Footer />

@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import { throttle } from 'lodash-es'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { Font } from 'three/examples/jsm/loaders/FontLoader'
 import font_bebasneue from '../assets/bebasneue_regular.json'
 
 import axis from './objects/axis'
@@ -26,6 +27,7 @@ export default class ThreeD {
 
     document.body.appendChild( this.renderer.domElement )
     const canvas = document.body.children[1]
+    canvas.id = 'main-canvas'
     canvas.style.width = '100%'
     canvas.style.height = '100%'
     canvas.style.position = 'fixed'
@@ -46,7 +48,7 @@ export default class ThreeD {
     this.raycaster = new THREE.Raycaster()
     this.raycaster.params.Line.threshold = 0.1
     this.loader = new GLTFLoader()
-    this.fonter = new THREE.Font(font_bebasneue)
+    this.fonter = new Font(font_bebasneue)
 
     this.animDBoxPulse = 1
 

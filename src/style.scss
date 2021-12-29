@@ -12,6 +12,15 @@ $sage: #BCB88A;
 
 body {
   background-color: forestgreen;
+  pointer-events: none;
+}
+
+.enable-input {
+  pointer-events: all;
+}
+
+#main-canvas {
+  pointer-events: all;
 }
 
 .header-container {
