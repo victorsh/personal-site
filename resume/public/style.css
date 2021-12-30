@@ -1,0 +1,248 @@
+*, html {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: white;
+  -webkit-print-color-adjust: exact;
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 12px;
+  overflow-x: hidden;
+}
+
+ul, li {
+  list-style-type: none;
+  list-style-position:inside;
+  margin: 0;
+  padding-left: 10px;
+  font-size: 10px;
+}
+
+ul, li, img {
+  vertical-align: middle;
+}
+
+img.info-img {
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+img.link-img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+}
+
+.sub-title {
+  padding-left: 10px;
+  font-size: 12px;
+  /* background-color: #aaeeaa; */
+}
+
+.content-box {
+  margin-bottom: 10px;
+  /* background-color: #eeaaaa; */
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Header */
+#header-container {
+  background-color: white;
+  -webkit-print-color-adjust: exact;
+  border-bottom: 1px solid black;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+}
+
+#credentials-container {
+  width: 60%;
+}
+
+#name {
+  font-size: 32px;
+}
+
+#info-container {
+  display: flex;
+}
+
+.info {
+  color: #555
+}
+
+#external-links-container {
+  width: 35%;
+}
+
+#external-links-container ul li {
+  font-size: 12px;
+}
+
+
+/* Main Content */
+#content-container {
+  background-color: white;
+  -webkit-print-color-adjust: exact;
+  border-bottom: 1px solid black;
+  width: 100%;
+  height: 950px;
+  display: flex;
+}
+
+.content-container-sub {
+  margin: 0 auto;
+  width: 49%;
+}
+
+/* Education */
+#education-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#education-container .sub-title {
+  font-size: 14px;
+  font-weight: 10px;
+  border-bottom: 1px solid black;
+}
+
+#education-info {
+  height: 30px;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+#coursework ul li {
+  font-size: 12px;
+}
+
+/* Work Experience */
+#work-experience-container {
+
+}
+
+#work-experience-container .sub-title {
+  font-size: 14px;
+  font-weight: bold;
+  /* border-bottom: 1px solid black; */
+}
+
+.work-role-duration {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.work-role {
+  width: 50%;
+  padding-left: 14px;
+  font-size: 12px;
+}
+
+.work-duration {
+  width: 50%;
+  text-align: right;
+  padding-left: 14px;
+  font-size: 12px;
+}
+
+.work-link {
+  margin-left: 30px;
+  font-size: 12px;
+}
+
+.work-description {
+  padding-left: 18px;
+  font-size: 12px;
+}
+
+.work-description ul {
+  margin-left: 1%;
+}
+
+.work-description li {
+  font-size: 12px;
+}
+
+/* Work Habits */
+#work-habits p {
+  padding: 5px;
+}
+
+/* Technical Skills */
+#technical-skills-container {
+
+}
+
+.ts-symbol {
+  font-size: 4px;
+  line-height: 12px;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: green;
+}
+
+#technical-skills-container .sub-title {
+  font-size: 12px;
+  font-weight: 10px;
+  border-bottom: 1px solid black;
+}
+
+#technical-skills-segments-container {
+  display: flex;
+}
+
+.technical-skills-segment {
+  padding-bottom: 5px;
+}
+
+#technical-skills-left {
+  width: 49%;
+  margin-right: 10px;
+}
+
+#technical-skills-right {
+  width: 49%;
+}
+
+/* Projects */
+#projects-container {
+
+}
+
+#projects-container .sub-title {
+  font-size: 12px;
+  font-weight: 10px;
+  border-bottom: 1px solid black;
+}
+
+.projects-tech {
+  margin-left: 15px;
+}
+
+.projects-link {
+  font-size: 10px;
+  margin-left: 30px;
+}
+
+#projects-container p {
+  margin-left: 35px;
+}
