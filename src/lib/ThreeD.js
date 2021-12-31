@@ -14,6 +14,7 @@ import RotatingBoxes from './objects/rotating-boxes'
 import tree from './objects/tree'
 import dbox from './objects/dbox'
 import loadingText from './objects/loading-text.js'
+import floatingParticles from './objects/floatingParticles'
 
 export default class ThreeD {
   constructor() {
@@ -71,7 +72,7 @@ export default class ThreeD {
   }
 
   init() {
-    this.ld_text = loadingText(this.scene, this.camera, this.fonter)
+    // this.ld_text = loadingText(this.scene, this.camera, this.fonter)
 
     this.loadLights()
     axis(this.scene)
@@ -99,6 +100,8 @@ export default class ThreeD {
     line.name = 'polyhedron-line'
     this.scene.add(line)
 
+    floatingParticles(this.scene)
+
     this.renderer.render(this.scene, this.camera)
     
     this.animate()
@@ -106,6 +109,12 @@ export default class ThreeD {
 
   animate() {
     this.renderer.setAnimationLoop(() => {
+      const polyhedron = this.scene.getObjectByName('polyhedron-line')
+      polyhedron.rotation.x += .01;
+      polyhedron.rotation.y += .01;
+      const particles = this.scene.getObjectByName('particles')
+      particles.rotation.x -= .001;
+      particles.rotation.y -= .001;
       const intersects = this.raycaster.intersectObjects( this.scene.children )
 
       if (intersects.length > 0 && !intersects[0].object.name.includes('axis')) {
