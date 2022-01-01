@@ -13,9 +13,7 @@ import ThreeD from './lib/ThreeD'
 ReactDom.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router history={createBrowserHistory()}>
-        <App />
-      </Router>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

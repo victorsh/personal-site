@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { useEffect } from 'react'
-import { BrowserRouter, Route, Switch, Link as RouterLink } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from './store/actions'
@@ -23,11 +23,9 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )

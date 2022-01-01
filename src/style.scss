@@ -12,6 +12,23 @@ $sage: #BCB88A;
 
 body {
   background-color: forestgreen;
+  pointer-events: none;
+}
+
+.enable-input {
+  pointer-events: all;
+}
+
+#main-canvas {
+  pointer-events: all;
+}
+
+#main-description {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+  font-size: 24px;
+  color: white;
 }
 
 .header-container {
@@ -31,11 +48,11 @@ body {
 }
 
 .header-side-left {
-  background-image: linear-gradient(to right, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
+  // background-image: linear-gradient(to right, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
 }
 
 .header-side-right {
-  background-image: linear-gradient(to left, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
+  // background-image: linear-gradient(to left, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
 }
 
 .header-mid {
@@ -50,19 +67,24 @@ body {
 }
 
 .footer-container {
+  background: rgba(50, 50, 50, 1);
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 5vh;
+  height: 80px;
   color: white;
-  background: rgb(31, 35, 43)
 }
 
 .footer {
   display: flex;
-  background: red;
   justify-content: center;
   margin: 0 auto;
-  width: 80%;
-  height: 5vh;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-link {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
