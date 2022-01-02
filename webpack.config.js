@@ -39,9 +39,6 @@ var config = {
       {
         test: /\.(?:ico|png|svg|jpg|jpeg|gif)$/i,
         loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
       },
       {
         test: /\.(?:woff|woff2|eot|ttf|otf)$/i,

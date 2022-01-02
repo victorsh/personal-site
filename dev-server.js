@@ -4,8 +4,11 @@ const config = require('./webpack.config.js')
 const webpackMiddleware = require('webpack-dev-middleware')
 const httpsLocalhost = require('https-localhost')
 const express = require('express')
+require('dotenv').config()
 
 const port = process.env.PORT
+console.log(port)
+console.log(process.env.NODE_ENV)
 let app = null
 
 const shouldWrite = (filepath) => {
@@ -40,5 +43,5 @@ app.listen(port, () => {
 })
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './dist/bundle.js'))
+  res.sendFile(path.join(__dirname, './main.bundle.js'))
 })
