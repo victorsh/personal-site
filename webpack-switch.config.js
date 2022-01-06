@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
   }
 
   if (argv.mode === 'production') {
-    //
+    config.mode = 'production'
   }
 
   return config

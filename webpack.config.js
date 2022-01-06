@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
+
+
 var config = {
   entry: './src/index.js',
   output: {
@@ -38,7 +40,7 @@ var config = {
       },
       {
         test: /\.(?:ico|png|svg|jpg|jpeg|gif)$/i,
-        loader: 'file-loader',
+        type: 'asset/resource'
       },
       {
         test: /\.(?:woff|woff2|eot|ttf|otf)$/i,
@@ -54,7 +56,7 @@ var config = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
       favicon: path.resolve(__dirname, './src/assets/vs.png'),
-      title: 'Some Kinda Crypto'
+      title: 'Victors Site'
     }),
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new NodePolyfillPlugin()
