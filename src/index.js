@@ -7,7 +7,7 @@ import { Router } from 'react-router'
 import { store } from './store/store'
 import { createBrowserHistory } from 'history';
 
-import app from './app'
+import App from './App'
 import ThreeD from './lib/ThreeD'
 
 ReactDom.render(

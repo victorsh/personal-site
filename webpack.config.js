@@ -5,8 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
-
-
 var config = {
   entry: './src/index.js',
   output: {
