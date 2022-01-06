@@ -1,6 +1,6 @@
 import React from 'react'
-import github from '../assets/github-mark-light-120px-plus.png'
-import linkedin from '../assets/li-in-bug.png'
+import github from '../assets/github.png'
+import linkedin from '../assets/linkedin.png'
 
 const Footer = () => {
   return (
