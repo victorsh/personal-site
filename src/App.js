@@ -9,7 +9,7 @@ import * as actions from './store/actions'
 import Home from './pages/Home'
 import './style.scss'
 
-const App = () => {
+const app = () => {
   const rstate = useSelector((rstate) => rstate)
   const dispatch = useDispatch()
   const { appState } = bindActionCreators(actions, dispatch)
