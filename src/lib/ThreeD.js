@@ -10,6 +10,7 @@ import { Font } from 'three/examples/jsm/loaders/FontLoader'
 import font_bebasneue from '../assets/bebasneue_regular.json'
 
 import axis from './objects/axis'
+import initLights from './world/initLights'
 import RotatingBoxes from './objects/rotating-boxes'
 import tree from './objects/tree'
 import dbox from './objects/dbox'
@@ -74,8 +75,8 @@ export default class ThreeD {
   init() {
     // this.ld_text = loadingText(this.scene, this.camera, this.fonter)
 
-    this.loadLights()
-    axis(this.scene)
+    initLights(this.scene)
+    // axis(this.scene)
 
     const polyhedronGeometry = new THREE.PolyhedronBufferGeometry(
       [-1,-1,-1,  1,-1,-1,  1, 1,-1,  -1, 1,-1,
@@ -86,14 +87,19 @@ export default class ThreeD {
        1,2,6,  6,5,1,
        2,3,7,  7,6,2,
        4,5,6,  6,7,4],
-      2, 1
+      3, 1
     )
-    const polyhedronMaterial = new THREE.MeshLambertMaterial({ color: '#335533' })
-    const polyhedron = new THREE.Mesh( polyhedronGeometry, polyhedronMaterial )
-    // this.scene.add(polyhedron)
+    const polyhedronMaterial = new THREE.MeshLambertMaterial({
+      color: '#55FF55', polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUints: 1
+    })
+    const polyhedronMesh = new THREE.Mesh(polyhedronGeometry, polyhedronMaterial)
+    polyhedronMesh.name
+    this.scene.add(polyhedronMesh)
+    polyhedronMesh.name = 'polyhedron-fill'
 
-    const wireframe = new THREE.WireframeGeometry(polyhedronGeometry)
-    const line = new THREE.LineSegments(wireframe)
+    const wireframeGeo = new THREE.EdgesGeometry(polyhedronMesh.geometry)
+    const wireframeMat = new THREE.LineBasicMaterial({ color: 0xFFFFFF })
+    const line = new THREE.LineSegments(wireframeGeo, wireframeMat)
     line.material.depthTest = false
     line.material.opacity = 0.25
     line.material.transparent = true
@@ -109,12 +115,15 @@ export default class ThreeD {
 
   animate() {
     this.renderer.setAnimationLoop(() => {
+      const polyhedronFill = this.scene.getObjectByName('polyhedron-fill')
+      polyhedronFill.rotation.x += 0.01
+      polyhedronFill.rotation.y += 0.01
       const polyhedron = this.scene.getObjectByName('polyhedron-line')
-      polyhedron.rotation.x += .01;
-      polyhedron.rotation.y += .01;
+      polyhedron.rotation.x += 0.01
+      polyhedron.rotation.y += 0.01
       const particles = this.scene.getObjectByName('particles')
-      particles.rotation.x -= .001;
-      particles.rotation.y -= .001;
+      particles.rotation.x -= .001
+      particles.rotation.y -= .001
       const intersects = this.raycaster.intersectObjects( this.scene.children )
 
       if (intersects.length > 0 && !intersects[0].object.name.includes('axis')) {
@@ -145,7 +154,13 @@ export default class ThreeD {
     window.removeEventListener('resize', throttle(() => this.resize(), 100))
     window.removeEventListener('keydown', (e) => this.keydown(e))
     window.removeEventListener('wheel', e => this.wheelScroll(e))
-    window.removeEventListener('mousemove', e => this.mouseMove(e) )
+    window.removeEventListener('mousemove', e => this.mouseMove(e))
+    window.removeEventListener('mousedown', e => this.mouseDown(e), false)
+    window.removeEventListener('mouseup', e => this.mouseUp(e), false)
+    window.removeEventListener('touchstart', e => {  })
+    window.removeEventListener('touchmove', e => {  })
+    window.removeEventListener('touchend', e => {  })
+    window.removeEventListener('touchcancel', e => {  })
   }
 
   stopAnimate() {
@@ -223,5 +238,4 @@ export default class ThreeD {
     this.pointlight.position.set( -5, -5, -5 )
     this.scene.add( this.pointlight )
   }
-
 }

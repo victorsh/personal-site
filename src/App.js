@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Moralis from 'moralis'
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from './store/actions'

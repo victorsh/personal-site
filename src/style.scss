@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
 $burgendy: #800020;
 $navy-blue: #000080;
@@ -7,7 +11,7 @@ $sage: #BCB88A;
 *, html {
   padding: 0;
   margin: 0;
-  font-family: 'Crimson+Pro';
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -28,7 +32,7 @@ body {
   margin: 0 auto;
   width: 80%;
   font-size: 24px;
-  color: white;
+  color: rgb(200, 200, 200);
 }
 
 .header-container {
@@ -48,11 +52,11 @@ body {
 }
 
 .header-side-left {
-  // background-image: linear-gradient(to right, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
+  background: rgb(0, 107, 150, 1);
 }
 
 .header-side-right {
-  // background-image: linear-gradient(to left, rgba(0, 107, 150, 0), rgb(0, 107, 150, 1));
+  background: rgb(0, 107, 150, 1);
 }
 
 .header-mid {
