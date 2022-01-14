@@ -1,3 +1,4 @@
 /node_modules
 /dist
 /resume/node_modules
+.env
